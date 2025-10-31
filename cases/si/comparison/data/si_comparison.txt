@@ -1,0 +1,8 @@
+# Manual vs PWTK silicon comparison
+Manual base: /Users/pollob/qe_macm4_build/cases/si/manual
+PWTK base  : /Users/pollob/qe_macm4_build/cases/si/pwtk
+Max |band difference| : 0.000e+00 eV
+Max |DOS difference|  : 4.935e+00 states/eV
+Max |PDOS s diff|     : 1.107e+00 states/eV
+Max |PDOS p diff|     : 1.153e+00 states/eV
+Note: runtime/efficiency metrics not captured in current logs.

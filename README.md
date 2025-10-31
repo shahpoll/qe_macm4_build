@@ -2,7 +2,7 @@
 
 > Reproducible Quantum ESPRESSO 7.4.1 workflow on macOS 15.3 (Sequoia) using Homebrew GCC + OpenMPI + veclibfort (Accelerate).
 
-![Si band structure](analysis/Si/plots/si_band_structure.png)
+![Si band structure](cases/si/manual/plots/si_band_structure.png)
 
 ## Contents
 
@@ -32,19 +32,20 @@ brew install gcc open-mpi cmake veclibfort openblas wget python
 
 ## Silicon example
 
-Artifacts reside under [`analysis/Si`](analysis/Si/README.md):
+Artifacts reside under [`cases/si/manual`](cases/si/manual/README.md) (manual workflow)
+and [`cases/si/pwtk`](cases/si/pwtk/README.md) (PWTK workflow).
 
 | File | Description |
 |------|-------------|
 | `inputs/Si.scf.in` | Baseline SCF input (Γ-point).
 | `inputs/Si.nscf.in` | 12×12×12 NSCF grid for DOS/PDOS.
-| `analysis/Si/logs/*.txt` | Full QE transcripts (SCF → NSCF → bands → DOS → projwfc).
-| `analysis/Si/data/silicon.dos` | Total DOS sampled from -15 to 20 eV.
-| `analysis/Si/data/si_band_summary.txt` | Fermi level and indirect/direct gaps.
-| `analysis/Si/plots/si_total_dos.png` | DOS (Accelerate build).
-| `analysis/Si/plots/si_pdos.png` | s/p-projected DOS per atom.
+| `cases/si/manual/logs/*.txt` | Full QE transcripts (SCF → NSCF → bands → DOS → projwfc).
+| `cases/si/manual/data/silicon.dos` | Total DOS sampled from -15 to 20 eV.
+| `cases/si/manual/data/si_band_summary.txt` | Fermi level and indirect/direct gaps.
+| `cases/si/manual/plots/si_total_dos.png` | DOS (Accelerate build).
+| `cases/si/manual/plots/si_pdos.png` | s/p-projected DOS per atom.
 
-> ![Si total DOS](analysis/Si/plots/si_total_dos.png)
+> ![Si total DOS](cases/si/manual/plots/si_total_dos.png)
 
 ## Helper scripts
 
@@ -55,8 +56,8 @@ Located in [`scripts/`](scripts):
 - `plot_si_pdos.py` — overlay s/p PDOS from `projwfc.x` outputs.
 - `analyze_si_bandgap.py` — compute indirect/direct gaps from band data.
 
-All scripts accept a `--base` argument (default `analysis/Si`) and a `--pwtk`
-shortcut for `analysis_pwtk/Si`, so each workflow regenerates its plots in-place.
+All scripts accept a `--base` argument (default `cases/si/manual`) and a `--pwtk`
+shortcut for `cases/si/pwtk`, so each workflow regenerates its plots in-place.
 
 All scripts use Matplotlib; install once via `python3 -m pip install --user matplotlib`.
 

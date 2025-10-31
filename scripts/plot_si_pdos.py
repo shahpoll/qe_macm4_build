@@ -19,8 +19,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-DEFAULT_BASE = ROOT / "analysis" / "Si"
-PT_BASE = ROOT / "analysis_pwtk" / "Si"
+DEFAULT_BASE = ROOT / "cases" / "si" / "manual"
+PT_BASE = ROOT / "cases" / "si" / "pwtk"
 
 PDOS_FILES = {
     "tot": "silicon.pdos_tot",
