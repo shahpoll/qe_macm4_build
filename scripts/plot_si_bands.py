@@ -19,9 +19,16 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-DATA_FILE = ROOT / "analysis" / "Si" / "data" / "silicon.bands.dat.gnu"
-LOG_FILE = ROOT / "analysis" / "Si" / "logs" / "si_bands_post.txt"
-OUT_PNG = ROOT / "analysis" / "Si" / "plots" / "si_band_structure.png"
+DEFAULT_BASE = ROOT / "analysis" / "Si"
+PT_BASE = ROOT / "analysis_pwtk" / "Si"
+
+
+def compute_paths(base: pathlib.Path | None) -> tuple[pathlib.Path, pathlib.Path, pathlib.Path]:
+    base_dir = DEFAULT_BASE if base is None else base
+    data = base_dir / "data" / "silicon.bands.dat.gnu"
+    log = base_dir / "logs" / "si_bands_post.txt"
+    out = base_dir / "plots" / "si_band_structure.png"
+    return data, log, out
 
 
 @dataclass
@@ -57,6 +64,8 @@ def parse_band_file(path: pathlib.Path) -> List[BandCurve]:
 
 
 def extract_symmetry_points(path: pathlib.Path) -> Sequence[Tuple[str, float]]:
+    if not path.exists():
+        return []
     labels: List[Tuple[float, str]] = []
     order = ["Γ", "X", "W", "K", "Γ", "L"]
 
@@ -76,15 +85,16 @@ def extract_symmetry_points(path: pathlib.Path) -> Sequence[Tuple[str, float]]:
     return labels
 
 
-def main() -> None:
-    if not DATA_FILE.exists():
-        raise SystemExit(f"Band data not found: {DATA_FILE}")
+def main(base: pathlib.Path | None = None) -> None:
+    data_file, log_file, out_png = compute_paths(base)
+    if not data_file.exists():
+        raise SystemExit(f"Band data not found: {data_file}")
 
-    bands = parse_band_file(DATA_FILE)
+    bands = parse_band_file(data_file)
     if not bands:
         raise SystemExit("No band curves parsed; aborting")
 
-    sym_points = extract_symmetry_points(LOG_FILE)
+    sym_points = extract_symmetry_points(log_file)
 
     fig, ax = plt.subplots(figsize=(6, 6), dpi=150)
 
@@ -109,11 +119,30 @@ def main() -> None:
     ax.set_title("Silicon band structure — QE 7.4.1 on Apple Silicon (M4)")
     ax.grid(alpha=0.2, which="both", axis="y")
 
-    OUT_PNG.parent.mkdir(parents=True, exist_ok=True)
+    out_png.parent.mkdir(parents=True, exist_ok=True)
     fig.tight_layout()
-    fig.savefig(OUT_PNG)
+    fig.savefig(out_png)
     plt.close(fig)
 
 
 if __name__ == "__main__":
-    main()
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Plot silicon band structure")
+    parser.add_argument(
+        "--base",
+        type=pathlib.Path,
+        help="Base directory containing data/logs/plots (default analysis/Si)",
+    )
+    parser.add_argument(
+        "--pwtk",
+        action="store_true",
+        help="Shortcut for --base analysis_pwtk/Si",
+    )
+    args = parser.parse_args()
+
+    base_dir = args.base
+    if args.pwtk:
+        base_dir = PT_BASE
+
+    main(base_dir)

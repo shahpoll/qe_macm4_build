@@ -55,6 +55,9 @@ Located in [`scripts/`](scripts):
 - `plot_si_pdos.py` — overlay s/p PDOS from `projwfc.x` outputs.
 - `analyze_si_bandgap.py` — compute indirect/direct gaps from band data.
 
+All scripts accept a `--base` argument (default `analysis/Si`) and a `--pwtk`
+shortcut for `analysis_pwtk/Si`, so each workflow regenerates its plots in-place.
+
 All scripts use Matplotlib; install once via `python3 -m pip install --user matplotlib`.
 
 ## Docs & Wiki

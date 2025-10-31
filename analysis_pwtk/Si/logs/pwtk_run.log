@@ -1,0 +1,31 @@
+      ========================================================================
+      *** PWTK-3.2    (PWscf ToolKit: a Tcl scripting environment)
+      ========================================================================
+      (for more info about PWTK, see http://pwtk.ijs.si/)
+
+      Running on host: Pollobs-Mac-mini.local
+      PWTK: /Users/pollob/qe_macm4_build/pwtk-3.2
+      Date: Sat Nov 01 00:37:27 +06 2025
+      PID:  16565
+
+      Executable: /Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/bin/pw.x
+      Running: mpirun -n 2 pw.x -in pw.si.scf.in > pw.si.scf.out
+
+      Executable: /Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/bin/pw.x
+      Running: mpirun -n 2 pw.x -in pw.si.nscf.in > pw.si.nscf.out
+
+      Executable: /Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/bin/pw.x
+      Running: mpirun -n 2 pw.x -in pw.si.bands.in > pw.si.bands.out
+
+      Executable: /Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/bin/bands.x
+      Running: mpirun -n 2 bands.x -in bands.si.in > bands.si.out
+
+      Executable: /Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/bin/dos.x
+      Running: mpirun -n 2 dos.x -in dos.si.in > dos.si.out
+
+      Executable: /Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/bin/projwfc.x
+      Running: mpirun -n 2 projwfc.x -in projwfc.si.in > projwfc.si.out
+
+
+      Job done.
+      --
