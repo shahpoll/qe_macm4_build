@@ -1,0 +1,5 @@
+analysis/Si/data/*.gnu text
+analysis/Si/data/*.dos text
+analysis/Si/data/*.dat text
+analysis/Si/data/silicon.pdos_* text
+analysis/Si/logs/* text
