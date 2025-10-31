@@ -63,6 +63,7 @@ All scripts use Matplotlib; install once via `python3 -m pip install --user matp
 - `docs/Guide.md` — quick checklist.
 - `docs/Si_Worklog.md` — chronological command log with macOS vs Ubuntu notes.
 - `docs/Troubleshooting.md` — known issues (CPP override, FoX, Metal GPU status).
+- `docs/wiki/` — ready-to-publish pages for the GitHub wiki (Environment, Workflow, Troubleshooting, Results).
 
 **Wiki suggestions:**
 
