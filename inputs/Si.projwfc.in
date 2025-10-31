@@ -1,0 +1,5 @@
+&projwfc
+  prefix='silicon', outdir='./tmp',
+  degauss=0.02, emin=-10.0, emax=15.0, DeltaE=0.05
+  filproj='silicon_pdos'
+/

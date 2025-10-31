@@ -742,3 +742,455 @@ artifacts/q-e-qe-7.4.1/bin/pw.x:
 
 ## Si SCF quick run
 PP missing: place Si.pbe-n-rrkjus_psl.1.0.0.UPF under ./pp and re-run. See docs/PP.md
+## Pseudopotential fetch
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  2 1477k    2 39958    0     0  23718      0  0:01:03  0:00:01  0:01:02 23713 38 1477k   38  562k    0     0   212k      0  0:00:06  0:00:02  0:00:04  212k100 1477k  100 1477k    0     0   466k      0  0:00:03  0:00:03 --:--:--  466k
+
+## Attempt B2 — Si SCF run
+    -1.6023  -1.6023   3.3622   3.3622   6.9278   6.9278  16.3274  16.3274
+
+          k = 0.6667-0.3333 1.0000 (   748 PWs)   bands (ev):
+
+    -3.4584   0.5720   2.6444   3.9204   9.0732   9.9362  10.4559  13.2895
+
+          k = 0.5000-0.1667 0.8333 (   738 PWs)   bands (ev):
+
+    -2.4726  -0.6288   2.2041   3.4530   9.5765   9.7785  12.3248  12.7416
+
+          k =-0.3333-1.0000 0.0000 (   742 PWs)   bands (ev):
+
+    -1.4822  -1.4822   2.5688   2.5688   8.9691   8.9691  12.9869  12.9869
+
+     the Fermi energy is     6.4576 ev
+
+     WARNING: integrated charge=     7.99854241, expected=     8.00000000
+
+!    total energy              =     -22.83849068 Ry
+     estimated scf accuracy    <          7.0E-09 Ry
+     smearing contrib. (-TS)   =       0.00010308 Ry
+     internal energy E=F+TS    =     -22.83859376 Ry
+
+     The total energy is F=E-TS. E is the sum of the following terms:
+     one-electron contribution =       5.16878573 Ry
+     hartree contribution      =       1.10442106 Ry
+     xc contribution           =     -12.31087095 Ry
+     ewald contribution        =     -16.80092961 Ry
+
+     convergence has been achieved in   5 iterations
+
+     Writing all to output data dir ./tmp/silicon.save/ :
+     XML data file, charge density, pseudopotentials, collected wavefunctions
+
+     init_run     :      0.06s CPU      0.08s WALL (       1 calls)
+     electrons    :      0.34s CPU      0.36s WALL (       1 calls)
+
+     Called by init_run:
+     wfcinit      :      0.02s CPU      0.02s WALL (       1 calls)
+     potinit      :      0.00s CPU      0.01s WALL (       1 calls)
+     hinit0       :      0.04s CPU      0.04s WALL (       1 calls)
+
+     Called by electrons:
+     c_bands      :      0.25s CPU      0.27s WALL (       6 calls)
+     sum_band     :      0.06s CPU      0.07s WALL (       6 calls)
+     v_of_rho     :      0.01s CPU      0.01s WALL (       6 calls)
+     newd         :      0.02s CPU      0.02s WALL (       6 calls)
+     mix_rho      :      0.00s CPU      0.00s WALL (       6 calls)
+
+     Called by c_bands:
+     init_us_2    :      0.01s CPU      0.01s WALL (     208 calls)
+     cegterg      :      0.24s CPU      0.25s WALL (      96 calls)
+
+     Called by *egterg:
+     cdiaghg      :      0.01s CPU      0.01s WALL (     366 calls)
+     h_psi        :      0.20s CPU      0.21s WALL (     398 calls)
+     s_psi        :      0.01s CPU      0.01s WALL (     398 calls)
+     g_psi        :      0.00s CPU      0.00s WALL (     286 calls)
+
+     Called by h_psi:
+     h_psi:calbec :      0.01s CPU      0.01s WALL (     398 calls)
+     vloc_psi     :      0.18s CPU      0.19s WALL (     398 calls)
+     add_vuspsi   :      0.01s CPU      0.01s WALL (     398 calls)
+
+     General routines
+     calbec       :      0.01s CPU      0.02s WALL (     494 calls)
+     fft          :      0.00s CPU      0.00s WALL (      67 calls)
+     ffts         :      0.00s CPU      0.00s WALL (       6 calls)
+     fftw         :      0.19s CPU      0.19s WALL (    5138 calls)
+
+     Parallel routines
+
+     PWSCF        :      0.45s CPU      0.52s WALL
+
+
+   This run was terminated on:  15:21:36  30Oct2025            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=
+
+## Attempt A2 — CMake rebuild
+-- Performing Test Fortran_ISYSTEM_SUPPORTED - Success
+-- Found OpenMP_Fortran: -fopenmp (found version "4.5")
+-- Found OpenMP: TRUE (found version "4.5") found components: Fortran
+-- Found MPI_Fortran: /opt/homebrew/bin/mpif90 (found version "3.1")
+-- Found MPI: TRUE (found version "3.1") found components: Fortran
+-- Selected the Fortran 'mpi' module. QE_ENABLE_MPI_MODULE=ON
+-- MPI settings used by CTest
+     MPIEXEC_EXECUTABLE : /opt/homebrew/bin/mpiexec
+     MPIEXEC_NUMPROC_FLAG : -n
+     MPIEXEC_PREFLAGS : 
+   Tests run as : /opt/homebrew/bin/mpiexec -n <NUM_PROCS>  <EXECUTABLE>
+-- Found Git: /opt/homebrew/bin/git (found suitable version "2.50.1", minimum required is "2.13")
+-- Source files are not cloned from a git repository.
+-- Trying to find LAPACK from ARM Performance Library
+-- Found BLAS: /opt/homebrew/opt/openblas/lib/libopenblas.dylib
+-- Found LAPACK: /opt/homebrew/opt/openblas/lib/libopenblas.dylib
+-- Looking for Fortran zhpev
+-- Looking for Fortran zhpev - found
+-- Installing Wannier90 via submodule
+-- Previous clone found at /Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/external/wannier90.
+-- Installing MBD via submodule
+-- Previous clone found at /Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/external/mbd.
+-- Found Git: /opt/homebrew/bin/git (found version "2.50.1")
+-- Setting version tag to  from Git
+-- Installing DeviceXlib via submodule
+-- Previous clone found at /Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/external/devxlib.
+-- Could NOT find VendorFFTW (missing: VendorFFTW_LIBRARIES VendorFFTW_INCLUDE_DIRS VendorFFTW_ID) 
+-- Found PkgConfig: /opt/homebrew/bin/pkg-config (found version "2.5.1")
+-- Found FFTW3: /opt/homebrew/lib/libfftw3.dylib;/opt/homebrew/lib/libfftw3_omp.dylib
+-- Looking for mallinfo
+-- Looking for mallinfo - not found
+-- Enabling tests in test-suite
+
+Only pw and cp results from ctest are reliable, we are working on making the rest tests work reliably with ctest. To run non-pw/cp tests, make a softlink of the bin directory to the root of QE source tree and run tests in the test-suite directory under that root.
+
+-- generating tests in pw category
+-- generating tests in cp category
+-- Configuring done (3.3s)
+-- Generating done (0.7s)
+-- Build files have been written to: /Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/buildA
+
+  645 |         CALL bcast_real( msg, 2 * msglen, source, gid )
+      |                         1
+......
+  722 |         CALL bcast_real( msg, 2 * msglen, source, gid )
+      |                         2
+Warning: Rank mismatch between actual argument at (1) and actual argument at (2) (rank-1 and scalar)
+/Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/UtilXlib/mp.f90:631:25:
+
+  631 |         CALL bcast_real( msg, msglen, source, gid )
+      |                         1
+......
+  722 |         CALL bcast_real( msg, 2 * msglen, source, gid )
+      |                         2
+Warning: Type mismatch between actual argument at (1) and actual argument at (2) (REAL(8)/COMPLEX(8)).
+/Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/UtilXlib/mp.f90:454:28:
+
+  454 |         CALL bcast_integer( msg, msglen, source, group )
+      |                            1
+......
+  828 |         CALL bcast_integer( imsg, msglen, source, group )
+      |                            2
+Warning: Rank mismatch between actual argument at (1) and actual argument at (2) (rank-1 and scalar)
+[ 14%] Building Fortran object external/mbd/src/CMakeFiles/mbd.dir/mbd_hamiltonian.F90.o
+[ 14%] Building Fortran object external/mbd/src/CMakeFiles/mbd.dir/mbd_rpa.F90.o
+[ 14%] Building Fortran object external/mbd/src/CMakeFiles/mbd.dir/mbd_scs.f90.o
+[ 14%] Building Fortran object external/mbd/src/CMakeFiles/mbd.dir/mbd_coulomb.f90.o
+[ 14%] Building Fortran object UtilXlib/CMakeFiles/qe_utilx.dir/error_handler.f90.o
+[ 14%] Building Fortran object UtilXlib/CMakeFiles/qe_utilx.dir/mp_bands_util.f90.o
+[ 14%] Building Fortran object UtilXlib/CMakeFiles/qe_utilx.dir/divide.f90.o
+[ 14%] Building Fortran object UtilXlib/CMakeFiles/qe_utilx.dir/set_mpi_comm_4_solvers.f90.o
+[ 14%] Building Fortran object UtilXlib/CMakeFiles/qe_utilx.dir/export_gstart_2_solvers.f90.o
+[ 14%] Linking Fortran static library ../lib/libqe_utilx.a
+[ 14%] Built target qe_utilx
+[ 14%] Building Fortran object external/mbd/src/CMakeFiles/mbd.dir/mbd_methods.F90.o
+[ 14%] Building Fortran object external/mbd/src/CMakeFiles/mbd.dir/mbd.F90.o
+[ 14%] Linking Fortran static library ../../../lib/libmbd.a
+[ 14%] Built target mbd
+make[1]: *** [PW/CMakeFiles/pw.dir/rule] Error 2
+make: *** [pw] Error 2
+/Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/upflib/wxml.f90:367:15:
+
+  367 |     real(DP_XML), intent(in) :: field(:,:)
+      |               1
+Error: Symbol 'dp_xml' at (1) has no IMPLICIT type
+/Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/upflib/wxml.f90:127:45:
+
+  127 |   subroutine xml_addattribute_r ( xf, name, value )
+      |                                             1~~~~
+Error: Symbol 'value' at (1) has no IMPLICIT type
+/Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/upflib/wxml.f90:141:45:
+
+  141 |   subroutine xml_addattribute_rv( xf, name, value )
+      |                                             1~~~~
+Error: Symbol 'value' at (1) has no IMPLICIT type; did you mean 'cvalue'?
+/Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/upflib/wxml.f90:309:40:
+
+  309 |   subroutine xml_addcharacters_r ( xf, field, fmt )
+      |                                        1~~~~
+Error: Symbol 'field' at (1) has no IMPLICIT type; did you mean 'cfield'?
+/Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/upflib/wxml.f90:364:40:
+
+  364 |   subroutine xml_addcharacters_rm( xf, field, fmt )
+      |                                        1~~~~
+Error: Symbol 'field' at (1) has no IMPLICIT type
+/Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/upflib/wxml.f90:334:40:
+
+  334 |   subroutine xml_addcharacters_rv( xf, field, fmt )
+      |                                        1~~~~
+Error: Symbol 'field' at (1) has no IMPLICIT type; did you mean 'cfield'?
+/Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/upflib/wxml.f90:127:3:
+
+  127 |   subroutine xml_addattribute_r ( xf, name, value )
+      |   1~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+......
+  141 |   subroutine xml_addattribute_rv( xf, name, value )
+      |   2~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Error: Ambiguous interfaces in generic interface 'xml_addattribute' for 'xml_addattribute_r' at (1) and 'xml_addattribute_rv' at (2)
+/Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/upflib/wxml.f90:334:3:
+
+  334 |   subroutine xml_addcharacters_rv( xf, field, fmt )
+      |   1~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+......
+  364 |   subroutine xml_addcharacters_rm( xf, field, fmt )
+      |   2~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Error: Ambiguous interfaces in generic interface 'xml_addcharacters' for 'xml_addcharacters_rv' at (1) and 'xml_addcharacters_rm' at (2)
+/Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/upflib/wxml.f90:334:40:
+
+  334 |   subroutine xml_addcharacters_rv( xf, field, fmt )
+      |                                        1~~~~
+Error: Symbol 'field' at (1) has no IMPLICIT type; did you mean 'cfield'?
+/Users/pollob/qe_macm4_build/artifacts/q-e-qe-7.4.1/upflib/wxml.f90:127:45:
+
+  127 |   subroutine xml_addattribute_r ( xf, name, value )
+      |                                             1~~~~
+Error: Symbol 'value' at (1) has no IMPLICIT type
+make[3]: *** [upflib/CMakeFiles/qe_xml.dir/wxml.f90.o] Error 1
+make[2]: *** [upflib/CMakeFiles/qe_xml.dir/all] Error 2
+make[1]: *** [PW/CMakeFiles/pw.dir/rule] Error 2
+make: *** [pw] Error 2
+## Si band workflow
+```
+     wfcinit      :      0.00s CPU      0.00s WALL (       1 calls)
+     potinit      :      0.00s CPU      0.00s WALL (       1 calls)
+     hinit0       :      0.04s CPU      0.04s WALL (       1 calls)
+
+     Called by electrons:
+     c_bands      :      5.07s CPU      5.39s WALL (       1 calls)
+     v_of_rho     :      0.00s CPU      0.00s WALL (       1 calls)
+     newd         :      0.00s CPU      0.01s WALL (       1 calls)
+
+     Called by c_bands:
+     init_us_2    :      0.01s CPU      0.01s WALL (     201 calls)
+     cegterg      :      4.85s CPU      5.15s WALL (     456 calls)
+
+     Called by *egterg:
+     cdiaghg      :      0.25s CPU      0.26s WALL (    7133 calls)
+     h_psi        :      3.91s CPU      4.10s WALL (    7589 calls)
+     s_psi        :      0.16s CPU      0.17s WALL (    7589 calls)
+     g_psi        :      0.02s CPU      0.02s WALL (    6932 calls)
+
+     Called by h_psi:
+     h_psi:calbec :      0.21s CPU      0.27s WALL (    7589 calls)
+     vloc_psi     :      3.51s CPU      3.62s WALL (    7589 calls)
+     add_vuspsi   :      0.18s CPU      0.19s WALL (    7589 calls)
+
+     General routines
+     calbec       :      0.21s CPU      0.26s WALL (    7589 calls)
+     fft          :      0.00s CPU      0.00s WALL (      12 calls)
+     fftw         :      3.09s CPU      3.18s WALL (   82018 calls)
+     davcio       :      0.00s CPU      0.01s WALL (     402 calls)
+
+     Parallel routines
+
+     PWSCF        :      5.18s CPU      5.56s WALL
+
+
+   This run was terminated on:  15: 7:56  31Oct2025            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=
+...
+     e(  2 -  2) =     -0.70585  eV     1   --> A_1  L_1       
+     e(  3 -  4) =      5.02288  eV     2   --> E    L_3       
+     e(  5 -  5) =      7.76355  eV     1   --> A_1  L_1       
+     e(  6 -  7) =      9.56300  eV     2   --> E    L_3       
+     e(  8 -  8) =     13.96210  eV     1   --> A_1  L_1       
+
+ **************************************************************************
+
+ **************************************************************************
+
+                    xk=(  -0.48750,   0.48750,   0.48750  )
+
+     Band symmetry, C_3v (3m)   point group:
+
+     e(  1 -  1) =     -3.42478  eV     1   --> A_1  L_1       
+     e(  2 -  2) =     -0.74394  eV     1   --> A_1  L_1       
+     e(  3 -  4) =      5.01951  eV     2   --> E    L_3       
+     e(  5 -  5) =      7.75968  eV     1   --> A_1  L_1       
+     e(  6 -  7) =      9.55909  eV     2   --> E    L_3       
+     e(  8 -  8) =     13.95610  eV     1   --> A_1  L_1       
+
+ **************************************************************************
+
+ **************************************************************************
+
+                    xk=(  -0.50000,   0.50000,   0.50000  )
+
+     zone border point and non-symmorphic group 
+     symmetry decomposition not available
+
+ **************************************************************************
+
+     BANDS        :      1.82s CPU      2.03s WALL
+
+
+   This run was terminated on:  15: 8:50  31Oct2025            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=
+```
+
+Generated plot: analysis/Si/plots/si_band_structure.png
+## Si DOS workflow
+```
+     wfcinit      :      0.00s CPU      0.00s WALL (       1 calls)
+     potinit      :      0.00s CPU      0.00s WALL (       1 calls)
+     hinit0       :      0.04s CPU      0.04s WALL (       1 calls)
+
+     Called by electrons:
+     c_bands      :      4.68s CPU      4.89s WALL (       1 calls)
+     v_of_rho     :      0.00s CPU      0.00s WALL (       1 calls)
+     newd         :      0.00s CPU      0.01s WALL (       1 calls)
+
+     Called by c_bands:
+     init_us_2    :      0.00s CPU      0.00s WALL (      72 calls)
+     cegterg      :      4.53s CPU      4.71s WALL (     218 calls)
+
+     Called by *egterg:
+     cdiaghg      :      0.50s CPU      0.51s WALL (    3727 calls)
+     h_psi        :      3.38s CPU      3.49s WALL (    3945 calls)
+     s_psi        :      0.10s CPU      0.11s WALL (    3945 calls)
+     g_psi        :      0.02s CPU      0.02s WALL (    3655 calls)
+
+     Called by h_psi:
+     h_psi:calbec :      0.12s CPU      0.14s WALL (    3945 calls)
+     vloc_psi     :      3.14s CPU      3.22s WALL (    3945 calls)
+     add_vuspsi   :      0.11s CPU      0.12s WALL (    3945 calls)
+
+     General routines
+     calbec       :      0.12s CPU      0.14s WALL (    3945 calls)
+     fft          :      0.00s CPU      0.00s WALL (      12 calls)
+     fftw         :      2.77s CPU      2.83s WALL (   72766 calls)
+     davcio       :      0.00s CPU      0.00s WALL (     144 calls)
+
+     Parallel routines
+
+     PWSCF        :      4.82s CPU      5.10s WALL
+
+
+   This run was terminated on:  19: 5:35  31Oct2025            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=
+...
+     http://www.quantum-espresso.org/quote
+
+     Parallel version (MPI), running on     1 processors
+
+     MPI processes distributed on     1 nodes
+     0 MiB available memory on the printing compute node when the environment starts
+
+
+     Reading xml data from directory:
+
+     ./tmp/silicon.save/
+
+     IMPORTANT: XC functional enforced from input :
+     Exchange-correlation= PBE
+                           (   1   4   3   4   0   0   0)
+     Any further DFT definition will be discarded
+     Please, verify this is what you really want
+
+
+     G-vector sticks info
+     --------------------
+     sticks:   dense  smooth     PW     G-vecs:    dense   smooth      PW
+     Sum         433     433    151                 5961     5961    1139
+
+     Using Slab Decomposition
+
+
+     Check: negative core charge=   -0.000004
+
+     Gaussian broadening (default values): ngauss,degauss=   0    0.001470
+
+
+     DOS          :      0.14s CPU      0.14s WALL
+
+
+   This run was terminated on:  19: 6: 9  31Oct2025            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=
+```
+Plots: analysis/Si/plots/si_total_dos.png
+## Si PDOS workflow
+```
+    |psi|^2 = 0.364
+==== e(  11) =    19.26634 eV ==== 
+     psi = 0.032*[#   1]+0.032*[#   5]+0.012*[#   2]+0.012*[#   3]+0.012*[#   4]
+          +0.012*[#   6]+0.012*[#   7]+0.012*[#   8]
+    |psi|^2 = 0.134
+==== e(  12) =    19.26634 eV ==== 
+     psi = 0.032*[#   1]+0.032*[#   5]+0.012*[#   2]+0.012*[#   3]+0.012*[#   4]
+          +0.012*[#   6]+0.012*[#   7]+0.012*[#   8]
+    |psi|^2 = 0.134
+==== e(  13) =    22.67247 eV ==== 
+     psi = 0.002*[#   2]+0.002*[#   3]+0.002*[#   4]+0.002*[#   6]+0.002*[#   7]
+          +0.002*[#   8]
+    |psi|^2 = 0.011
+==== e(  14) =    22.67247 eV ==== 
+     psi = 0.002*[#   2]+0.002*[#   3]+0.002*[#   4]+0.002*[#   6]+0.002*[#   7]
+          +0.002*[#   8]
+    |psi|^2 = 0.011
+==== e(  15) =    24.82663 eV ==== 
+
+    |psi|^2 = 0.005
+==== e(  16) =    24.82663 eV ==== 
+
+    |psi|^2 = 0.005
+
+Lowdin Charges: 
+
+     Atom #   1: total charge =   3.9638, s =  1.1614, 
+     Atom #   1: total charge =   3.9638, p =  2.8024, pz=  0.9341, px=  0.9341, py=  0.9341, 
+     Atom #   2: total charge =   3.9638, s =  1.1614, 
+     Atom #   2: total charge =   3.9638, p =  2.8024, pz=  0.9341, px=  0.9341, py=  0.9341, 
+     Spilling Parameter:   0.0091
+
+     PROJWFC      :      0.19s CPU      0.28s WALL
+
+
+   This run was terminated on:  19:32:26  31Oct2025            
+
+=------------------------------------------------------------------------------=
+   JOB DONE.
+=------------------------------------------------------------------------------=
+```
+Plots: analysis/Si/plots/si_pdos.png
+## Si band summary
+```
+# Silicon band summary (derived from silicon.bands.dat.gnu)
+Fermi level (from silicon.dos)  :   6.2200 eV
+Valence band maximum            :   6.2198 eV at k-index 0 (s = 0.0000)
+Conduction band minimum         :   6.7897 eV at k-index 34 (s = 0.8500)
+Indirect gap (Cmin - Vmax)      :   0.5699 eV
+Direct gap (min over k)         :   2.5598 eV at k-index 0 (s = 0.0000)
+```
